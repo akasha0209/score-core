@@ -32,9 +32,14 @@
               }
             ],
             "styles": [
+              "src/assets/css/styles.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/popper.min.js",
+              "src/assets/js/bootstrap.min.js",
+              "src/assets/js/jquery.min.js"
+            ]
           },
           "configurations": {
             "production": {
