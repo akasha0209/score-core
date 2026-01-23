@@ -1,0 +1,45 @@
+name: Validate Node-Dev PR
+
+# Trigger only on PRs targeting the node-dev branch
+on:
+  pull_request:
+    branches:
+      - node-dev
+
+jobs:
+  validate-folder:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch full history for accurate diff
+
+      - name: Get changed files
+        id: changed-files
+        run: |
+          # Get list of all changed files in this PR
+          git fetch origin ${{ github.base_ref }}
+          CHANGED_FILES=$(git diff --name-only origin/${{ github.base_ref }}...HEAD)
+          echo "Changed files:"
+          echo "$CHANGED_FILES"
+          echo "changed_files<<EOF" >> $GITHUB_OUTPUT
+          echo "$CHANGED_FILES" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Validate Node folder only
+        run: |
+          # Check if any changed file is outside the nodejs/ folder
+          INVALID_FILES=$(echo "${{ steps.changed-files.outputs.changed_files }}" | grep -v '^nodejs/' || true)
+          
+          if [ -n "$INVALID_FILES" ]; then
+            echo "❌ ERROR: The following files are outside the nodejs/ folder:"
+            echo "$INVALID_FILES"
+            echo ""
+            echo "PRs to node-dev branch must ONLY modify files inside nodejs/"
+            exit 1
+          else
+            echo "✅ All changed files are within nodejs/ folder"
+            exit 0
+          fi
