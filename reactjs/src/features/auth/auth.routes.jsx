@@ -13,6 +13,10 @@ export default function AuthRoutes() {
         path='/register'
         element={<Register />}
       />
+      <Route
+        path='*'
+        element={<Login />}
+      />
     </Routes>
   );
 }
