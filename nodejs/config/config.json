@@ -1,0 +1,30 @@
+{
+    "development": {
+        "HOST": "192.168.6.8",
+        "LOCAL_HOST": "localhost",
+        "PORT": 3000,
+        "MONGODB_URI": "XXXX",
+        "JWT_SECRET": "SECRET#123",
+        "FRONT_END_URL": "http://localhost:5173/",
+        "WEBSITE_URL": "http://localhost:5173/",
+        "WEBSITE_URL_WITHOUT_PORT": "http://localhost:/",
+        "SMTP_HOST": "mail.24livehost.com",
+        "SMTP_PORT": 465,
+        "SMTP_SECURE": true,
+        "SMTP_USER": "ds23@24livehost.com",
+        "SMTP_PASSWORD": "uGOBwN3qk6FyPD",
+        "FROM_EMAIL": "ds23@24livehost.com",
+        "FROM_NAME": "test",
+        "WEBISTE_ROOT_PATH": "",
+        "LOGO_UPLOAD_PATH": "",
+        "MONGO_USERNAME": "akashasharma0209_db_user",
+        "MONGO_PASSWORD": "ELJl6bIeCnB2ZEgF"
+    },
+    "production": {
+        "HOST": "",
+        "PORT": 80,
+        "MONGODB_URI": "",
+        "JWT_SECRET": "SECRET#123",
+        "JWT_EXP": "2m"
+    }
+}
