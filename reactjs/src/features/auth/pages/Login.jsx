@@ -44,11 +44,11 @@ export default function Login() {
     <Box
       sx={{
         width: '100vw',
-        height: '100vh',
+        minHeight: '100vh',
         display: 'flex',
         flexDirection: { xs: 'column', md: 'row' },
-        overflow: 'hidden',
-        position: 'fixed',
+        overflow: { xs: 'auto', md: 'hidden' },
+        position: { xs: 'relative', md: 'fixed' },
         top: 0,
         left: 0,
         '@keyframes slideInLeft': {
@@ -92,14 +92,15 @@ export default function Login() {
       <Box
         sx={{
           width: { xs: '100%', md: '45%' },
-          height: '100vh',
+          minHeight: { xs: '100vh', md: '100vh' },
           background: '#0a0a0a',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           padding: { xs: 3, sm: 4, md: 6 },
           position: 'relative',
-          overflow: 'hidden',
+          overflowY: 'auto',
+          overflowX: 'hidden',
         }}>
         {/* Background Decoration */}
         <Box
@@ -120,6 +121,7 @@ export default function Login() {
             width: '100%',
             maxWidth: '450px',
             animation: 'slideInLeft 0.8s ease-out',
+            py: { xs: 2, md: 0 },
           }}>
           {/* Logo/Brand */}
           <Box sx={{ mb: 4 }}>
@@ -303,13 +305,13 @@ export default function Login() {
       {/* Right Side - Hero Section */}
       <Box
         sx={{
-          width: { xs: '100%', md: '55%' },
+          display: { xs: 'none', md: 'flex' },
+          width: '55%',
           height: '100vh',
           background: 'linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%)',
-          display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          padding: { xs: 4, md: 6 },
+          padding: 6,
           position: 'relative',
           overflow: 'hidden',
         }}>
